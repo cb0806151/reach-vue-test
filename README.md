@@ -1,24 +1,16 @@
 # reach-vue-test
 
-## Project setup
-```
-yarn install
-```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+<details><summary>Development Log</summary>
+<p>
 
-### Compiles and minifies for production
-```
-yarn build
-```
+3/12/2021
+- Create basic html  
+- Create reach contract boilerplate  
+- Create reach contract test file  
 
-### Lints and fixes files
-```
-yarn lint
-```
+Create reach contract functions  
+Connect reach functions to frontend  
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+</p>
+</details>

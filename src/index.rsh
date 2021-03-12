@@ -4,10 +4,21 @@ export const main =
     Reach.App(
         {},
         [
-            Participant('Deployer', {}),
-            Participant('Attacher', {})
+            Participant('Deployer', {
+                saysHello: Fun([], Null),
+            }),
+            Participant('Attacher', {
+                saysGoodbye: Fun([], Null),
+            })
         ],
         (D, A) => {
+
+            D.only(() => {
+                interact.saysHello(); });
+
+            A.only(() => {
+                interact.saysGoodbye(); });
+
             exit();
         }
 );
