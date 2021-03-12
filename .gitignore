@@ -2,6 +2,7 @@
 node_modules
 /dist
 tut.scrbl
+src/reach
 
 # local env files
 .env.local
