@@ -26,7 +26,7 @@ export default {
     return {
       account: undefined,
     };
-},
+  },
   methods: {
     connectWallet: async function() {
       this.account = await reach.getDefaultAccount();
