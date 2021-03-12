@@ -8,6 +8,7 @@
 - Create basic html  
 - Create reach contract boilerplate  
 - Create reach contract test file  
+- Create frontend wallet functionality  
 
 Create reach contract functions  
 Connect reach functions to frontend  
