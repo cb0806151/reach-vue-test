@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <button v-on:click="connectWallet">Connect Wallet</button>
-    <button :disabled="account === undefined">Add 1 token to wallet</button>
+    <button :disabled="account === undefined" v-on:click="fundWallet">Add 10 tokens to wallet</button>
     <div id="pane-container">
       <div class="pane">
         <button>Deploy contract</button>
@@ -22,9 +22,11 @@ import * as reach from '@reach-sh/stdlib/ETH';
 
 export default {
   name: 'ContractOffice',
-  props: {
-    account: {},
-  },
+  data: function() {
+    return {
+      account: undefined,
+    };
+},
   methods: {
     connectWallet: async function() {
       this.account = await reach.getDefaultAccount();

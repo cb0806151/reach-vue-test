@@ -4,6 +4,7 @@ node_modules
 tut.scrbl
 src/reach
 src/build
+src/docker-compose.yml.react
 
 # local env files
 .env.local

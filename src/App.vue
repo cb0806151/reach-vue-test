@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ContractOffice msg="Welcome to Your Vue.js App"/>
+    <ContractOffice />
   </div>
 </template>
 
