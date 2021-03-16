@@ -1,18 +1,11 @@
 <template>
   <div id="container">
     <button v-on:click="connectWallet">Connect Wallet</button>
-    <button :disabled="account === undefined" v-on:click="fundWallet">Add 10 tokens to wallet</button>
-    <div id="pane-container">
-      <div class="pane">
-        <button>Deploy contract</button>
-        <textarea></textarea>
-        <button>Copy Invite</button>
-      </div>
-      <div class="pane">
-        <button>Join Contract</button>
-        <textarea></textarea>
-        <button>Submit Invite</button>
-      </div>
+    <div>
+      <input type="number" id="tokenAmount" name="tokenAmount" v-model="tokenAmount" :disabled="account === undefined">
+      <label for="tokenAmount">
+        <button :disabled="account === undefined" v-on:click="fundWallet">Add Tokens</button>
+      </label>
     </div>
   </div>
 </template>
@@ -25,6 +18,7 @@ export default {
   data: function() {
     return {
       account: undefined,
+      tokenAmount: 0,
     };
   },
   methods: {
@@ -34,7 +28,7 @@ export default {
     fundWallet: async function() {
       try {
         const faucet = await reach.getFaucet();
-        await reach.transfer(faucet, this.account, reach.parseCurrency(10));
+        await reach.transfer(faucet, this.account, reach.parseCurrency(this.tokenAmount));
       } catch {
         alert("wallet could not be funded");
       }
@@ -45,12 +39,13 @@ export default {
 
 <style>
 body {
-  background: darkgray;
+  background: gray;
 }
 
 button {
-  margin: 10px;
+  margin: 10px 0px 10px 0px;
 }
+
 #container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
