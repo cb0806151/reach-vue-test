@@ -5,6 +5,7 @@ tut.scrbl
 src/reach
 src/build
 src/docker-compose.yml.react
+src/docker-compose.yml.devnet
 
 # local env files
 .env.local
