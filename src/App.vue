@@ -7,11 +7,12 @@
         <button :disabled="account === undefined" v-on:click="fundWallet">Add Tokens</button>
       </label>
     </div>
+    <p>Wallet Balance: {{walletBalance}}</p>
   </div>
 </template>
 
 <script>
-import * as reach from '@reach-sh/stdlib/ETH';
+import * as reach from '@reach-sh/stdlib/ALGO';
 
 export default {
   name: 'App',
@@ -19,19 +20,28 @@ export default {
     return {
       account: undefined,
       tokenAmount: 0,
+      walletBalance: 0,
     };
   },
   methods: {
     connectWallet: async function() {
       this.account = await reach.getDefaultAccount();
     },
-    fundWallet: async function() {
+    updateBalance: async function() {
+      let balance = await reach.balanceOf(this.account);
+      this.walletBalance = await reach.formatCurrency(balance, 4);
+    },
+    transferFundsToWallet: async function() {
       try {
         const faucet = await reach.getFaucet();
         await reach.transfer(faucet, this.account, reach.parseCurrency(this.tokenAmount));
       } catch {
         alert("wallet could not be funded");
       }
+    },
+    fundWallet: async function() {
+      await this.transferFundsToWallet();
+      await this.updateBalance();
     }
   }
 }
